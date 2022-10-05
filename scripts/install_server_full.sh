@@ -59,14 +59,15 @@ npm install pm2@latest -g
 msg_ok "nginx and pm2 installed"
 
 
-msg_info "Build Client"
+msg_info "Install node_modules"
 sleep 2
 cd ../client/
 npm install
-npm run build
-msg_info "Builds to /var/www/html"
+msg_ok "node_modules installed"
 
-
-msg_ok "Built Client to /var/www/html"
+msg_info "Start the server with pm2"
+sleep 2
+pm2 start index.js  --name "mern-server"
+msg_ok "Server started"
 
 msg_ok "Done with build steps"

@@ -52,40 +52,60 @@
 6. Connect
 7. Enter the password you chose when creating the Droplet.
 8. `git  clone https://github.com/deskavaenkelt/mern-typescript-deployment.git`
+9. Make script run able
+    - `chmod +x scripts/0_update_system_and_install_dependencies.sh`
+    - `chmod +x scripts/1_setup_environment.sh`
+10. Run [update script](scripts/0_update_system_and_install_dependencies.sh)
+11. Edit environment variables in `.env` files
+12. Run [script](scripts/1_setup_environment.sh) for setting up node environment and build production files.
 
-## SSH into Digital Ocean Droplet with VSCode integration
+## nginx
 
-1. Open VSCode
-2. Click "Remote Explorer"
-3. Click "SSH Targets"
-4. Click "Add New SSH Host"
-5. Enter the IP address of your Digital Ocean Droplet
-6. Enter the username. I chose `root`.
-7. Enter the password you chose when creating the Droplet.
-8. Click "Save"
-9. Click "Connect"
+1. Install nginx
+    - `sudo apt install nginx`
+    - `sudo systemctl status nginx`
+    - `sudo systemctl enable nginx`
+    - `sudo systemctl start nginx`
+    - `sudo systemctl status nginx`
+    - `sudo ufw allow 'Nginx HTTP'`
+    - `sudo ufw status`
+2. Configure nginx
+3. Create a new file in `/etc/nginx/sites-available/` called `mern-typescript-deployment`
+4. Copy the following code into the file
+   ```
+   server {
+       listen 80;
+       server_name mern-typescript-deployment;
+       location / {
+           proxy_pass http://localhost:5000;
+       }
+   }
+   ```
+5. Create a symbolic link to the file in `/etc/nginx/sites-enabled/`
+6. `sudo nginx -t`
+7. `sudo systemctl restart nginx`
+8. `sudo systemctl status nginx`
+9. `sudo ufw status`
+10. `sudo ufw allow 'Nginx Full'`
+11. `sudo ufw status`
+12. `sudo ufw delete allow 'Nginx HTTP'`
+13. `sudo ufw status`
+14.
 
+### alternative
 
-## Manual work
+1. `sudo apt install nginx`
+2. `curl localhost:80`
+3. `nano /etc/nginx/sites-enabled/default`
+    * `root /var/www/html;` -> `#root /var/www/html;`
+    * under location add new last line: `proxy_pass http://localhost:8080;`
+4. `sudo systemctl restart nginx`
+5. 
 
-### MongoDB
+## MongoDB
 
-   Add access to database from the droplets IP address
+Add access to database from the droplets IP address
 
-### MERN-Server
-
-1. Create and Edit environment variables in `.env` file
-2. Edit row 11 in `mern-typescript-deployment/server_js/src/middlewares/Middleware.js` -> `const ALLOWED_ORIGINS = 'http://droplet-url'`
-3. Edit row 15 in `mern-typescript-deployment/server_js/src/configuration/Configuration.js` -> `uri = 'mongodb+srv://'`
-
-### MERN-Client
-
-1. Create and Edit environment variables in `.env` file
-
-### Run Scripts
-
-1. Make script run able with `chmod +x mern-typescript-deployment/scripts/*.sh`
-2. Run install script for respective Client and Server
 
 /var/www/html
 chmod +x scripts/install_client_full.sh
