@@ -11,7 +11,8 @@ const ApiAlive = () => {
 	function alive() {
 		TodoService.alive()
 			.then(function (response) {
-				setDbConnection(response.data === 'API is Alive with TypeScript!')
+				console.log(response.data)
+				setDbConnection(response.data === 'API is Alive!')
 			})
 			.catch(function (error) {
 				console.log(error)

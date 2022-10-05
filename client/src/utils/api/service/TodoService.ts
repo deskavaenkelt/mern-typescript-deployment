@@ -6,7 +6,7 @@ const toggleTodos = '/todos/toggleCompleted'
 
 const TodoService = {
 	alive: () => {
-		return http.get('/')
+		return http.get('/alive')
 	},
 	
 	createTodo: (todo: CreateOrUpdateTodo) => {
