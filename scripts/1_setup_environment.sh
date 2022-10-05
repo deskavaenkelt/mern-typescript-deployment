@@ -56,7 +56,7 @@ sleep 2
 cd ../client/
 npm install
 npm run build
-mv build/ ../server/dist/static/
+#mv build/ ../server/dist/static/
 msg_ok "Built Client and moved to production folder"
 
 msg_ok "Done with build steps"
