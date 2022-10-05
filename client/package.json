@@ -19,7 +19,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "BUILD_PATH='../server/static' react-scripts ../server/production/static",
+    "build": "BUILD_PATH='../server/dist/static' react-scripts",
     "build_std": "react-scripts ../server/production/static",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
