@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const dbCollection = process.env.MONGODB_COLLECTION
+const dbCollection = String(process.env.MONGODB_COLLECTION)
 
 const todoSchema = new mongoose.Schema({
     title: 'string',
