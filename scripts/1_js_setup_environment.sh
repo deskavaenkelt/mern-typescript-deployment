@@ -64,3 +64,4 @@ msg_ok "Done with build steps"
 # node ../server/dist/index.js
 #pm2 start ../server/dist/index.js --name "server"
 
+
