@@ -43,13 +43,13 @@ sleep 2
 rm -rf ../server/dist
 msg_ok "Removed old production build"
 
-#msg_info "Build Server"
-#sleep 2
-#cd ../server/
-#npm install
-#npm run build_std
-## fix error in logger `nano src/middlewares/MorganMiddleware.js`
-#msg_ok "Built Server"
+msg_info "Build Server"
+sleep 2
+cd ../server/
+npm install
+#npm run build
+# fix error in logger `nano src/middlewares/MorganMiddleware.js`
+msg_ok "Built Server"
 
 msg_info "Build Client"
 sleep 2

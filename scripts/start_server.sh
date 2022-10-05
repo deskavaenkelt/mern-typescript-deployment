@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-node ../server/dist/index.js
+node ../server_js/src/index.js
 
