@@ -67,7 +67,7 @@ msg_info "Build Client"
 sleep 2
 cd ../client/
 npm install
-npm run build
+npm run build_nginx
 msg_info "Builds to /var/www/html"
 
 
