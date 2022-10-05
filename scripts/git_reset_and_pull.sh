@@ -2,6 +2,9 @@
 
 git reset --hard
 git pull
+
+chmod +x git_reset_and_pull.sh
+
 chmod +x install_client_full.sh
 chmod +x uninstall_client_full.sh
 
