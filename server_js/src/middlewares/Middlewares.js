@@ -7,7 +7,8 @@ import MorganMiddleware from './MorganMiddleware.js'
 
 dotenv.config()
 const env = process.env.NODE_ENV || 'production'
-const ALLOWED_ORIGINS = String(process.env.ALLOWED_ORIGINS ) || 'http://localhost:3000'
+// const ALLOWED_ORIGINS = 'http://localhost:3000'
+const ALLOWED_ORIGINS = 'http://188.166.164.224'
 
 // Middlewares
 const allowedOrigins = [ALLOWED_ORIGINS]
@@ -19,12 +20,16 @@ const options = {
     methods: allowedMethods
 }
 
+const access_control = (app) => {
+    app.use(function(req, res, next) {
+        res.header("Access-Control-Allow-Origin", ALLOWED_ORIGINS); // update to match the domain you will make the request from
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        next();
+    });
+}
+
 const applyMiddlewares = (app) => {
-    // app.use(function(req, res, next) {
-    //     res.header("Access-Control-Allow-Origin", "188.166.164.224"); // update to match the domain you will make the request from
-    //     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    //     next();
-    // });
+    access_control(app)
     app.use(cors(options))
     app.use(helmet())
     app.use(MorganMiddleware)
