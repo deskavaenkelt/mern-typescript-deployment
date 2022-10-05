@@ -53,7 +53,7 @@ npm i -g n
 msg_info "Install latest stable NodeJS"
 sleep 2
 sudo n stable
-source ~/.bashrc
+#source ~/.bashrc
 msg_ok "NodeJS installed"
 
 

@@ -37,9 +37,9 @@ function msg_ok() {
     echo -e "${BFR} ${CM} ${GN}${msg}${CL}"
 }
 
-msg_info "Uninstall NodeJS nginx"
+msg_info "Uninstall NodeJS"
 sleep 2
-sudo apt remove npm nginx -y
+sudo apt remove npm -y
 rm -rf /var/www/html
 #source ~/.bashrc
 msg_ok "Uninstalled NodeJS nginx"

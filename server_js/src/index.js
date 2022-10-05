@@ -6,6 +6,7 @@ import TodoRoutes from './routes/TodoRoutes.js'
 import Logger from './utils/Logger.js'
 
 const app = express()
+
 Middleware.applyMiddlewares(app)
 
 AliveRoutes(app)

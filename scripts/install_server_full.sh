@@ -17,9 +17,9 @@ CM="${GN}✓${CL}"
 CROSS="${RD}✗${CL}"
 clear
 
-echo -e "${BL}This script will Perform uninstallation of installed componenets.${CL}"
+echo -e "${BL}This script will Perform installation and build steps.${CL}"
 while true; do
-    read -rp "Start the Cleeanup Script (y/n)?" yn
+    read -rp "Start the Build Script (y/n)?" yn
     case $yn in
         [Yy]* ) break;;
         [Nn]* ) exit;;
@@ -37,11 +37,36 @@ function msg_ok() {
     echo -e "${BFR} ${CM} ${GN}${msg}${CL}"
 }
 
-msg_info "Uninstall NodeJS nginx"
-sleep 2
-sudo apt remove npm nginx -y
-rm -rf /var/www/html
-#source ~/.bashrc
-msg_ok "Uninstalled NodeJS nginx"
+sudo apt update && sudo apt upgrade -y && sudo apt dist-upgrade -y
 
-msg_ok "Done with cleanup"
+msg_info "Install NodeJS"
+sleep 2
+sudo apt install npm -y
+npm -v
+msg_info "Install n"
+sleep 2
+npm i -g n
+msg_info "Install latest stable NodeJS"
+sleep 2
+sudo n stable
+#source ~/.bashrc
+msg_ok "NodeJS installed"
+
+
+msg_info "Installing pm2"
+sleep 2
+npm install pm2@latest -g
+msg_ok "nginx and pm2 installed"
+
+
+msg_info "Build Client"
+sleep 2
+cd ../client/
+npm install
+npm run build
+msg_info "Builds to /var/www/html"
+
+
+msg_ok "Built Client to /var/www/html"
+
+msg_ok "Done with build steps"
