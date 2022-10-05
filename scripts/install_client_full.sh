@@ -42,7 +42,7 @@ sudo apt update && sudo apt upgrade -y && sudo apt dist-upgrade -y
 msg_info "Install nginx"
 sleep 2
 sudo apt install nginx -y
-npm -v
+nginx -v
 msg_info "Install NodeJS"
 sleep 2
 sudo apt install npm -y
@@ -66,7 +66,11 @@ msg_ok "Removed old client build"
 msg_info "Build Client"
 sleep 2
 cd ../client/
+msg_info "npm install"
 npm install
+sleep 1
+msg_info "build_nginx"
+sleep 1
 npm run build_nginx
 msg_info "Builds to /var/www/html"
 
