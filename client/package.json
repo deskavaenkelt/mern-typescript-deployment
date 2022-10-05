@@ -19,7 +19,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "BUILD_PATH='../server/static' react-scripts ../server/production/static",
+    "build_std": "react-scripts ../server/production/static",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

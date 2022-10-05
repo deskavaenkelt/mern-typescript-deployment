@@ -15,7 +15,7 @@ if (env === 'development') {
 	PORT = Number(process.env.SERVER_PORT)
 } else {
 	uri = process.env.MONGODB_URI
-	PORT = 80
+	PORT = 8080
 }
 
 
