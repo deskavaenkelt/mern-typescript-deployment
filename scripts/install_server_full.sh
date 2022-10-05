@@ -49,7 +49,10 @@ npm i -g n
 msg_info "Install latest stable NodeJS"
 sleep 2
 sudo n stable
+sleep 1
 #source ~/.bashrc
+sleep 1
+hash -r
 msg_ok "NodeJS installed"
 
 
@@ -61,13 +64,13 @@ msg_ok "nginx and pm2 installed"
 
 msg_info "Install node_modules"
 sleep 2
-cd ../client/
+cd ../server_js/
 npm install
 msg_ok "node_modules installed"
 
 msg_info "Start the server with pm2"
 sleep 2
-pm2 start index.js  --name "mern-server"
+pm2 start src/index.js  --name "mern-server"
 msg_ok "Server started"
 
 msg_ok "Done with build steps"

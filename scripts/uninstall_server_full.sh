@@ -37,11 +37,12 @@ function msg_ok() {
     echo -e "${BFR} ${CM} ${GN}${msg}${CL}"
 }
 
-msg_info "Uninstall NodeJS"
+msg_info "Uninstall NodeJS and pm2"
 sleep 2
-sudo apt remove npm -y
-rm -rf /var/www/html
+pm2 stop all
+pm2 delete all
+sudo apt remove npm pm2 -y
 #source ~/.bashrc
-msg_ok "Uninstalled NodeJS nginx"
+msg_ok "Uninstalled NodeJS pm2"
 
 msg_ok "Done with cleanup"
