@@ -1,6 +1,7 @@
 import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 import Logger from '../utils/Logger.js'
+import logger from '../utils/Logger.js'
 
 dotenv.config()
 
@@ -19,7 +20,8 @@ if (env === 'development') {
 
 const connectToDatabase = async () => {
     try {
-        await mongoose.connect(uri)
+        Logger.info(uri)
+        await mongoose.connect(String(uri))
         Logger.info('Successfully connected to the Database')
     } catch (error) {
         Logger.error('Error while connecting to Database'.toUpperCase(), error)
