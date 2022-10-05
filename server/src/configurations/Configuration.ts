@@ -5,15 +5,17 @@ import Logger from '../utils/Logger'
 
 dotenv.config()
 
-const PORT: number = Number(process.env.SERVER_PORT) || 8080
 const env: string = process.env.NODE_ENV
+let PORT: number = 8080
 
 let uri: string
 
 if (env === 'development') {
 	uri = process.env.MONGODB_URL + process.env.MONGODB_DB_NAME
+	PORT = Number(process.env.SERVER_PORT)
 } else {
 	uri = process.env.MONGODB_URI
+	PORT = 80
 }
 
 

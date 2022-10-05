@@ -25,6 +25,9 @@ const applyMiddlewares = (app: express.Application) => {
 	app.use(MorganMiddleware)
 	app.use(express.json())
 	app.use(express.urlencoded({extended: false}))
+	if (env === 'production') {
+		app.use(express.static('static'))
+	}
 }
 
 // Own made middlewares
