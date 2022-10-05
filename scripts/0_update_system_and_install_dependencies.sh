@@ -10,3 +10,4 @@ source ~/.bashrc
 npm install pm2@latest -g
 #sudo n latest
 exit
+
