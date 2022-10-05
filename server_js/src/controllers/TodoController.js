@@ -8,6 +8,7 @@ const returnUpdatedObject = {
 
 const create = (req, res) => {
     try {
+        res.header("Access-Control-Allow-Origin", "*");
         Logger.http(req.body)
         const { title, assignedTo } = req.body
         const incompleteBody = !title || !assignedTo
@@ -33,6 +34,7 @@ const create = (req, res) => {
 
 const findAllTodos = (req, res) => {
     try {
+        res.header("Access-Control-Allow-Origin", "*");
         Logger.http(req.body)
         TodoModel.find((error, todos) => {
             if (error) {
@@ -53,6 +55,7 @@ const findAllTodos = (req, res) => {
 
 const findTodoById = (req, res) => {
     try {
+        res.header("Access-Control-Allow-Origin", "*");
         const { id } = req.params
         TodoModel.findById(id, (error, todo) => {
             if (error) {
@@ -73,6 +76,7 @@ const findTodoById = (req, res) => {
 
 const updateTodo = (req, res) => {
     try {
+        res.header("Access-Control-Allow-Origin", "*");
         const { id } = req.params
         const { title, assignedTo } = req.body
         const query = {
@@ -98,6 +102,7 @@ const updateTodo = (req, res) => {
 
 const toggleTodoStatus = (req, res) => {
     try {
+        res.header("Access-Control-Allow-Origin", "*");
         const { id } = req.params
         const { newTodoStatus } = req.body
         const query = {
@@ -122,6 +127,7 @@ const toggleTodoStatus = (req, res) => {
 
 const deleteTodo = (req, res) => {
     try {
+        res.header("Access-Control-Allow-Origin", "*");
         const { id } = req.params
         TodoModel.findByIdAndDelete(id, (error, todo) => {
             if (error) {

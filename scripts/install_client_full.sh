@@ -39,6 +39,10 @@ function msg_ok() {
 
 sudo apt update && sudo apt upgrade -y && sudo apt dist-upgrade -y
 
+msg_info "Install nginx"
+sleep 2
+sudo apt install nginx -y
+npm -v
 msg_info "Install NodeJS"
 sleep 2
 sudo apt install npm -y

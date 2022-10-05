@@ -1,7 +1,6 @@
 import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 import Logger from '../utils/Logger.js'
-import logger from '../utils/Logger.js'
 
 dotenv.config()
 
@@ -17,10 +16,8 @@ if (env === 'development') {
     PORT = 8080
 }
 
-
 const connectToDatabase = async () => {
     try {
-        Logger.info(uri)
         await mongoose.connect(String(uri))
         Logger.info('Successfully connected to the Database')
     } catch (error) {

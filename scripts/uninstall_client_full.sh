@@ -41,7 +41,7 @@ sudo apt update && sudo apt upgrade -y && sudo apt dist-upgrade -y
 
 msg_info "Uninstall NodeJS nginx"
 sleep 2
-sudo apt uninstall npm nginx -y
+sudo apt remove npm nginx -y
 rm -rf /var/www/html
 source ~/.bashrc
 msg_ok "Uninstalled NodeJS nginx"
