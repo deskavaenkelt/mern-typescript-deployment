@@ -1,24 +1,24 @@
-import { Schema, model } from 'mongoose'
+import mongoose from 'mongoose'
 
 const dbCollection = process.env.MONGODB_COLLECTION
 
-const todoSchema = new Schema({
+const todoSchema = new mongoose.Schema({
     title: {
-        type: String,
+        type: 'string',
         required: true
     },
     completed: {
-        type: Boolean,
+        type: 'boolean',
         required: true
     },
     assignedTo: {
-        type: String,
+        type: 'string',
         required: true
     }
 }, {
     timestamps: true
 })
 
-const TodoModel = model(dbCollection, todoSchema)
+const TodoModel = mongoose.model(dbCollection, todoSchema)
 
 export default TodoModel
