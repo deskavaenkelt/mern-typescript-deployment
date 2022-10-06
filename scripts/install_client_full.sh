@@ -68,9 +68,9 @@ sleep 2
 cd ../client/
 msg_info "npm install"
 npm install
-sleep 1
+sleep 2
 msg_info "build_nginx"
-sleep 1
+sleep 2
 npm run build_nginx
 msg_info "Builds to /var/www/html"
 

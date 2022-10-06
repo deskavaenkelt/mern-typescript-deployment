@@ -55,9 +55,9 @@
 9. Make script run able
     - `chmod +x scripts/0_update_system_and_install_dependencies.sh`
     - `chmod +x scripts/1_setup_environment.sh`
-10. Run [update script](scripts/0_update_system_and_install_dependencies.sh)
+10. Run [update script](scripts/other/0_update_system_and_install_dependencies.sh)
 11. Edit environment variables in `.env` files
-12. Run [script](scripts/1_setup_environment.sh) for setting up node environment and build production files.
+12. Run [script](scripts/other/1_setup_environment.sh) for setting up node environment and build production files.
 
 ## nginx
 
